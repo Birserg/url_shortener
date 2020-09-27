@@ -5,7 +5,7 @@ class LinksController < ApplicationController
 
   def create
     link = Link.create!(url: params[:url], slug: SecureRandom.uuid[0..5])
-    render json: { url: link.id }
+    render json: { url: url_for(action: 'show', short_url: link.slug) }
   end
 
   def stats
